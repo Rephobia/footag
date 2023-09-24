@@ -4,18 +4,18 @@ docker-compiler := "compiler"
 default:
     just --list --unsorted
 
-# build docker service
+# docker build service
 build service:
-    docker-compose build --no-cache {{service}}
+    docker compose build --no-cache {{service}}
 
-# run docker service
-run service command:
-    docker-compose run {{service}} {{command}}
+# execute docker compose run --rm in service
+run service *command:
+    docker compose run --rm {{service}} {{command}}
 
 # compile footag-spy application
 compile-spy:
-    just run {{docker-compiler}} "g++ ./src/spy/main.cpp -o footag-spy"
+    just run {{docker-compiler}} ./scripts/run_cmake.sh
 
-# compile footag-spy application
+# execute footag-spy application
 execute-spy:
-    just run {{docker-compiler}} ./footag-spy
+    just run {{docker-compiler}} ./build/src/spy/footag-spy

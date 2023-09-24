@@ -11,5 +11,3 @@ services:
     volumes:
       - .:${APP_ROOT}
     working_dir: ${APP_ROOT}
-    profiles:
-      - donotstart

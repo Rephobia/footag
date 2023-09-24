@@ -31,4 +31,6 @@
 *.out
 *.app
 
+# Application
 .env
+/build
