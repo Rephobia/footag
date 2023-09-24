@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  compiler:
+    build:
+      context: .docker/.containers/compiler
+      args:
+        USER_ID: ${USER_ID}
+    container_name: ${CONTAINER_PREFIX}-compiler
+    user: ${USER_ID}
+    volumes:
+      - .:${APP_ROOT}
+    working_dir: ${APP_ROOT}
+    profiles:
+      - donotstart
